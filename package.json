@@ -13,7 +13,7 @@
     "watch": [
       "src"
     ],
-    "exec": "tsc && node ./dist/main.js",
+    "exec": "tsc && tsc-alias && node ./dist/main.js",
     "ext": "ts,js,json"
   },
   "keywords": [],

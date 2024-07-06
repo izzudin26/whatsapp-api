@@ -2,6 +2,7 @@ import { Router } from "express";
 import { transformPhoneNumberToId } from "../utils/whatsapp.utils";
 import { isJidUser } from "@whiskeysockets/baileys";
 import { HttpException } from "@/error/http";
+import { connectToWhatsApp } from "@/service/whatsapp.service";
 
 const router = Router();
 
@@ -36,7 +37,12 @@ router.post("/", async (req, res, next) => {
 
     if (!isPhoneValid) throw new HttpException(400, "Invalid Phone Number");
 
-    await global.whatsapp.sendMessage(idPhone, { text });
+    try {
+      await global.whatsapp.sendMessage(idPhone, { text });
+    } catch (error) {
+      global.whatsapp = await connectToWhatsApp();
+      await global.whatsapp.sendMessage(idPhone, { text });
+    }
 
     return res
       .send({

@@ -1,4 +1,4 @@
-import makeWASocket, { Browsers, DisconnectReason, BufferJSON, useMultiFileAuthState } from "@whiskeysockets/baileys";
+import makeWASocket, { Browsers, DisconnectReason, BufferJSON, useMultiFileAuthState } from "baileys";
 import { Boom } from "@hapi/boom";
 
 export async function connectToWhatsApp() {

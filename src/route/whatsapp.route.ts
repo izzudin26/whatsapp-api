@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { transformPhoneNumberToId } from "../utils/whatsapp.utils";
-import { isJidUser } from "@whiskeysockets/baileys";
+import { isJidUser } from "baileys";
 import { HttpException } from "@/error/http";
 import { connectToWhatsApp } from "@/service/whatsapp.service";
 
